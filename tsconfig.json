@@ -1,0 +1,10 @@
+{
+    "exclude": ["./node_modules"],
+    "include": ["./lib/**/*.ts"],
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "experimentalDecorators": true
+    }
+}
