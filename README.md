@@ -2,9 +2,9 @@
 
 ### Production in heroku
 
-### How use?
-
 ## commands
+
+### How use?
 
 ```
     npm run watch - watch and compile archives then save
