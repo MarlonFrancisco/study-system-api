@@ -1,4 +1,4 @@
-## Api for study system use
+# Api for study system use
 
 ### Production in heroku
 

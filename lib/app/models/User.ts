@@ -1,4 +1,5 @@
 import mongoose from './../../data';
+import { Schema } from 'mongoose';
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -15,6 +16,14 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false,
     },
+    subjects: [{
+        type: String,
+        unique: true,
+    }],
+    lessons: [{
+        type: String,
+        unique: true,
+    }]
 });
 
 const User = mongoose.model("User", UserSchema);

@@ -5,7 +5,9 @@
   "main": "./dist/app.js",
   "scripts": {
     "watch": "rm -rf ./dist && mkdir dist && gulp watch",
-    "dev": "NODE_ENV=development nodemon ./dist/app.js"
+    "dev": "NODE_ENV=development nodemon ./dist/app.js",
+    "start": "NODE_ENV=production node ./dist/app.js",
+    "build": "rm -rf ./dist && mkdir dist && gulp compile"
   },
   "keywords": [],
   "author": "",
