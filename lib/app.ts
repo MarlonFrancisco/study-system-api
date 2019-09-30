@@ -4,6 +4,7 @@ import User from "./app/controllers/UserController";
 import auth from "./app/middlewares/auth";
 import Auth from "./app/controllers/AuthController";
 import { json, urlencoded } from "body-parser";
+import * as cors from "cors";
 class App {
     private app: express.Application;
 
@@ -15,6 +16,7 @@ class App {
     }
 
     private configs(): void {
+        this.app.use(cors());
         this.app.use(urlencoded({ extended: true }));
         this.app.use(json());
         this.app.listen(process.env.PORT, () => {
