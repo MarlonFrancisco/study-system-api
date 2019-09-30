@@ -1,13 +1,13 @@
 import { Request, Response, Router } from "express";
-import { get } from "mongoose";
 import User from "../models/User";
 import { IRequest } from "../../typings/express";
+import { Get } from "../../helpers/decorators";
 const router = Router();
 
 class UserController {
     public router = router;
 
-    @get("/")
+    @Get("/", router)
     public async get(req: IRequest, res: Response) {
         try {
             const user = await User.findById(req.userId);
