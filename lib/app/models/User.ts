@@ -18,11 +18,9 @@ const UserSchema = new mongoose.Schema({
     },
     subjects: [{
         type: String,
-        unique: true,
     }],
     lessons: [{
         type: String,
-        unique: true,
     }]
 });
 
