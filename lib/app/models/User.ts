@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
         select: false,
     },
     subjects: {
-        type: String,
+        type: Schema.Types.Array,
     },
     lessons: {
         type: Schema.Types.Array,
