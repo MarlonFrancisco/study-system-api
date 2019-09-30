@@ -16,12 +16,12 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false,
     },
-    subjects: [{
+    subjects: {
         type: String,
-    }],
-    lessons: [{
-        type: String,
-    }]
+    },
+    lessons: {
+        type: Schema.Types.Array,
+    }
 });
 
 const User = mongoose.model("User", UserSchema);
