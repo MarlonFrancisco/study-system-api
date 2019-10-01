@@ -16,7 +16,7 @@ class AuthController {
                 return res.status(400).send("User exists");
             }
 
-            user = await new User({...req.body});
+            user = await User.create({...req.body});
 
             if (!user) {
                 return res.status(400).send("User not created");
