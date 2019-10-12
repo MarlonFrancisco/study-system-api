@@ -1,5 +1,5 @@
 import mongoose from './../../data';
-import { Schema, Types } from 'mongoose';
+import { Schema } from 'mongoose';
 import { IUser } from '../../typings/UserModel';
 
 const UserSchema = new mongoose.Schema({
@@ -20,13 +20,13 @@ const UserSchema = new mongoose.Schema({
         select: false,
         minlength: 5,
     },
-    subjects: [{
-        type: Schema.Types.ObjectId,
-        ref: "Subject"
-    }],
     lessons: [{
         type: Schema.Types.ObjectId,
         ref: "Lesson"
+    }],
+    subjects: [{
+        type: Schema.Types.ObjectId,
+        ref: "Subject"
     }],
 });
 
