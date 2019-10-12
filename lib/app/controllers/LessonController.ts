@@ -1,5 +1,5 @@
 import { Router, Response } from "express";
-import { Put } from "../../helpers/decorators";
+import { Post, Delete } from "../../helpers/decorators";
 import User from "../models/User";
 import { IRequest } from "../../typings/express";
 import Lesson from "../models/Lesson";
@@ -8,7 +8,7 @@ const router = Router();
 class LessonController {
     public router = router;
     
-    @Put("/add", router)
+    @Post("/add", router)
     public async add(req: IRequest, res: Response) {
         try {
             const { name } =  req.body;
@@ -34,7 +34,7 @@ class LessonController {
         }
     }
 
-    @Put("/remove", router)
+    @Delete("/remove", router)
     public async remove(req: IRequest, res: Response) {
         try {
             const { name } = req.body;
