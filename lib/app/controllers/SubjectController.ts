@@ -8,7 +8,7 @@ const router = Router();
 class SubjectController {
     public router = router;
 
-    @Post("/", router)
+    @Post("/add", router)
     public async create(req: IRequest, res: Response) {
         try {
             const { name } = req.body;
