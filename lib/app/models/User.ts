@@ -1,5 +1,6 @@
 import mongoose from './../../data';
-import { Schema } from 'mongoose';
+import { Schema, Types } from 'mongoose';
+import { IUser } from '../../typings/UserModel';
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -19,14 +20,16 @@ const UserSchema = new mongoose.Schema({
         select: false,
         minlength: 5,
     },
-    subjects: {
-        type: Schema.Types.Array,
-    },
-    lessons: {
-        type: Schema.Types.Array,
-    }
+    subjects: [{
+        type: Schema.Types.ObjectId,
+        ref: "Subject"
+    }],
+    lessons: [{
+        type: Schema.Types.ObjectId,
+        ref: "Lesson"
+    }],
 });
 
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model<IUser>("User", UserSchema);
 
 export default User;

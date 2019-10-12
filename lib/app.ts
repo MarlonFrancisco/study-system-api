@@ -5,13 +5,13 @@ import auth from "./app/middlewares/auth";
 import Auth from "./app/controllers/AuthController";
 import { json, urlencoded } from "body-parser";
 import * as cors from "cors";
+import Lesson from "./app/controllers/LessonController";
 class App {
     private app: express.Application;
 
     constructor() {
         this.app = express();
         this.configs();
-        this.middlewares();
         this.routes();
     }
 
@@ -24,13 +24,10 @@ class App {
         });
     }
 
-    private middlewares(): void {
-        this.app.use("/user", auth);
-    }
-
     private routes(): void {
         this.app.use("/auth", Auth);
-        this.app.use("/user", User);
+        this.app.use("/user", [auth, User]);
+        this.app.use("/lesson", [auth, Lesson]);
     }
 
     get App() {

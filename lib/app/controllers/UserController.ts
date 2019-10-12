@@ -10,7 +10,7 @@ class UserController {
     @Get("/", router)
     public async get(req: IRequest, res: Response) {
         try {
-            const user = await User.findById(req.userId);
+            const user = await User.findById(req.userId).populate(["lessons", "subjects"]);
 
             if (!user) {
                 return res.status(400).send("user not found");
