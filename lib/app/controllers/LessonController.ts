@@ -8,7 +8,7 @@ const router = Router();
 class LessonController {
     public router = router;
     
-    @Post("/add", router)
+    @Post("/", router)
     public async add(req: IRequest, res: Response) {
         try {
             const { name } =  req.body;
@@ -34,7 +34,7 @@ class LessonController {
         }
     }
 
-    @Delete("/remove", router)
+    @Delete("/", router)
     public async remove(req: IRequest, res: Response) {
         try {
             const { name } = req.body;
