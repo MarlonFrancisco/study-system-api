@@ -1,6 +1,6 @@
 import Subject from "./../models/Subject";
 import { Router, Request, Response } from "express";
-import { Post, Delete } from "../../helpers/decorators";
+import { Post, Delete, Get } from "../../helpers/decorators";
 import User from "../models/User";
 import { IRequest } from "../../typings/express";
 
@@ -60,6 +60,17 @@ class SubjectController {
 
             return res.send(subjects);
         } catch(err) {
+            return res.status(400).send(err);
+        }
+    }
+
+    @Get("/", router)
+    public async get(req: IRequest, res: Response) {
+        try {
+            const subjects = await Subject.find({ user: req.userId });
+
+            return res.send(subjects);
+        } catch (err) {
             return res.status(400).send(err);
         }
     }
