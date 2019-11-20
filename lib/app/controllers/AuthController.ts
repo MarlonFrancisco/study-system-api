@@ -1,7 +1,8 @@
 import { Request, Response, Router } from "express";
+import { Post } from "../../helpers/decorators";
 import { Token } from "../../helpers/Token";
-import { Post } from "./../../helpers/decorators";
-import User from "./../models/User";
+import User from "../models/User";
+
 const router = Router();
 
 class AuthController {

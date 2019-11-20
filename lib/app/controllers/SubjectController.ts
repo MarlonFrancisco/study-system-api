@@ -1,8 +1,8 @@
-import Subject from "./../models/Subject";
-import { Router, Request, Response } from "express";
-import { Post, Delete, Get } from "../../helpers/decorators";
+import { Request, Response, Router } from "express";
+import { Delete, Get, Post } from "../../helpers/decorators";
+import { IRequest } from "../../interfaces/express";
+import Subject from "../models/Subject";
 import User from "../models/User";
-import { IRequest } from "../../typings/express";
 
 const router = Router();
 class SubjectController {
@@ -27,7 +27,7 @@ class SubjectController {
             user.subjects.push(subject._id);
 
             await user.save();
-            
+
             const subjects = await Subject.find({ user: req.userId });
 
             return res.send(subjects);
@@ -59,7 +59,7 @@ class SubjectController {
             const subjects = await Subject.find({ user: req.userId });
 
             return res.send(subjects);
-        } catch(err) {
+        } catch (err) {
             return res.status(400).send(err);
         }
     }

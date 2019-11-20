@@ -1,5 +1,5 @@
 import { sign, verify } from "jsonwebtoken";
-import {IPayloadToken} from "./../typings/payload";
+import { IPayloadToken } from "./../interfaces/payload";
 
 export class Token {
     public static createToken(payload: IPayloadToken, secret: string): string {
@@ -8,7 +8,11 @@ export class Token {
         });
     }
 
-    public static verifyToken(token: string, secret: string, callback: (err: any, decoded: IPayloadToken) => void): void {
+    public static verifyToken(
+        token: string,
+        secret: string,
+        callback: (err: any, decoded: IPayloadToken) => void,
+    ): void {
         verify(token, secret, (err, decoded: IPayloadToken) => {
             callback(err, decoded);
         });

@@ -1,18 +1,18 @@
-import { Router, Response } from "express";
-import { Post, Delete } from "../../helpers/decorators";
-import User from "../models/User";
-import { IRequest } from "../../typings/express";
+import { Response, Router } from "express";
+import { Delete, Post } from "../../helpers/decorators";
+import { IRequest } from "../../interfaces/express";
 import Lesson from "../models/Lesson";
+import User from "../models/User";
 
 const router = Router();
 class LessonController {
     public router = router;
-    
+
     @Post("/", router)
     public async add(req: IRequest, res: Response) {
         try {
-            const { name } =  req.body;
-            let user = await User.findById(req.userId);
+            const { name } = req.body;
+            const user = await User.findById(req.userId);
             let lesson = await Lesson.findOne({ name });
 
             if (!user) {
@@ -27,7 +27,7 @@ class LessonController {
             user.lessons.push(lesson._id);
 
             await user.save();
-        
+
             return res.send(user.lessons);
         } catch (err) {
             return res.status(400).send(err);
@@ -40,10 +40,10 @@ class LessonController {
             const { name } = req.body;
             const user = await User.findById(req.userId);
             const lesson = await Lesson.findOne({ user: req.userId, name });
-            await Lesson.findOneAndDelete({ user: req.userId, name});
-            
+            await Lesson.findOneAndDelete({ user: req.userId, name });
+
             if (!user) {
-                return res.status(400).send("User not found")
+                return res.status(400).send("User not found");
             }
 
             user.lessons.splice(user.lessons.indexOf(lesson._id), 1);

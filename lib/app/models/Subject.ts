@@ -1,5 +1,6 @@
-import mongoose from './../../data';
 import { Schema } from "mongoose";
+
+import mongoose from "../../data";
 
 const SubjectModel = new mongoose.Schema({
     name: {

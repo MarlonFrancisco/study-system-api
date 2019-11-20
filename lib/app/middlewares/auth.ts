@@ -1,6 +1,7 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
+
 import { Token } from "../../helpers/Token";
-import { IRequest } from "../../typings/express";
+import { IRequest } from "../../interfaces/express";
 
 export default (req: IRequest, res: Response, next: NextFunction) => {
     const authorization = req.headers.authorization;
@@ -30,4 +31,4 @@ export default (req: IRequest, res: Response, next: NextFunction) => {
 
         next();
     });
-}
+};

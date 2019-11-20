@@ -1,6 +1,6 @@
-import mongoose from './../../data';
-import { ILesson } from '../../typings/LessonModel';
-import { Schema } from 'mongoose';
+import { Schema } from "mongoose";
+import mongoose from "../../data";
+import { ILesson } from "../../interfaces/LessonModel";
 
 const LessonSchema = new mongoose.Schema({
     name: {
@@ -8,12 +8,12 @@ const LessonSchema = new mongoose.Schema({
     },
     created: {
         type: Date,
-        default: new Date().toLocaleDateString(),    
+        default: new Date().toLocaleDateString(),
     },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
-    }
+    },
 });
 
 const Lesson = mongoose.model<ILesson>("Lesson", LessonSchema);

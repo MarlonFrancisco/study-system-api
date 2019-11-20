@@ -1,6 +1,7 @@
-import mongoose from './../../data';
-import { Schema } from 'mongoose';
-import { IUser } from '../../typings/UserModel';
+import { Schema } from "mongoose";
+
+import mongoose from "../../data";
+import { IUser } from "../../interfaces/UserModel";
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -22,12 +23,13 @@ const UserSchema = new mongoose.Schema({
     },
     lessons: [{
         type: Schema.Types.ObjectId,
-        ref: "Lesson"
+        ref: "Lesson",
     }],
     subjects: [{
         type: Schema.Types.ObjectId,
-        ref: "Subject"
+        ref: "Subject",
     }],
+
 });
 
 const User = mongoose.model<IUser>("User", UserSchema);

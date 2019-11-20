@@ -1,7 +1,8 @@
 import { Request, Response, Router } from "express";
-import User from "../models/User";
-import { IRequest } from "../../typings/express";
 import { Get } from "../../helpers/decorators";
+import { IRequest } from "../../interfaces/express";
+import User from "../models/User";
+
 const router = Router();
 
 class UserController {
