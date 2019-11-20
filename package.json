@@ -23,7 +23,7 @@
     "gulp-typescript": "^5.0.1",
     "jezzmailer": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.19.3"
   },
   "devDependencies": {
