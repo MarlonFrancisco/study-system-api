@@ -7,4 +7,5 @@ export interface IUser extends Document {
     password: string;
     subjects: string[];
     lessons: ILesson[];
+    studyplan: string;
 }

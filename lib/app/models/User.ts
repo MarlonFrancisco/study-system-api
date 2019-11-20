@@ -29,7 +29,10 @@ const UserSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "Subject",
     }],
-
+    studyplan: {
+        type: String,
+        default: null,
+    }
 });
 
 const User = mongoose.model<IUser>("User", UserSchema);

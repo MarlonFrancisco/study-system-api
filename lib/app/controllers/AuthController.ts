@@ -2,6 +2,8 @@ import { Request, Response, Router } from "express";
 import { Post } from "../../helpers/decorators";
 import { Token } from "../../helpers/Token";
 import User from "../models/User";
+import app from "../../app";
+import { resolve } from "path";
 
 const router = Router();
 
@@ -22,6 +24,10 @@ class AuthController {
             if (!user) {
                 return res.status(400).send("User not created");
             }
+            const pathTemplate = resolve("lib", "app", "views", "mail", "welcome.html");
+            app.mailer.sender(pathTemplate, [{
+                name: "name", value: user.name,
+            }], "[LIGA DOS ESTUDANTES] Boas vindas", user.email);
 
             return res.send({
                 user,
