@@ -17,7 +17,7 @@ class RecoveryController {
             const user = await User.findOne({ email });
 
             if (!user) {
-                return res.status(400).send("user not found");
+                return res.status(400).send("not found user");
             }
 
             const token = Token.createToken({ email }, process.env.SECRET);
@@ -28,7 +28,7 @@ class RecoveryController {
                 "mail",
                 "recovery.html",
             );
-            const mailState = App.mailer.sender(
+            const mailState = await App.mailer.sender(
                 pathTemplate,
                 [
                     { name: "name", value: user.name },

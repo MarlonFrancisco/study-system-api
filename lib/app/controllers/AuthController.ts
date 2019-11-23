@@ -25,7 +25,7 @@ class AuthController {
                 return res.status(400).send("User not created");
             }
             const pathTemplate = resolve("lib", "app", "views", "mail", "welcome.html");
-            app.mailer.sender(pathTemplate, [{
+            await app.mailer.sender(pathTemplate, [{
                 name: "name", value: user.name,
             }], "[LIGA DOS ESTUDANTES] Boas vindas", user.email);
 
@@ -47,7 +47,7 @@ class AuthController {
             const user = await User.findOne({ email, password });
 
             if (!user) {
-                return res.status(400).send("User not found");
+                return res.status(400).send("not found user");
             }
 
             return res.send({ user, token: Token.createToken({ id: user._id }, process.env.SECRET)});

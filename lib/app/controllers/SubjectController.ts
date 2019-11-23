@@ -16,7 +16,7 @@ class SubjectController {
             let subject = await Subject.findOne({ user: req.userId, name });
 
             if (!user) {
-                return res.status(400).send("User not founded");
+                return res.status(400).send("not found usered");
             }
 
             if (subject) {
@@ -44,7 +44,7 @@ class SubjectController {
             const subject = await Subject.findOne({ user: req.userId, name });
 
             if (!user) {
-                return res.status(400).send("User not founded");
+                return res.status(400).send("not found usered");
             }
 
             if (!subject) {

@@ -16,7 +16,7 @@ class LessonController {
             let lesson = await Lesson.findOne({ name });
 
             if (!user) {
-                return res.status(400).send("User not found");
+                return res.status(400).send("not found user");
             }
 
             if (lesson) {
@@ -43,7 +43,7 @@ class LessonController {
             await Lesson.findOneAndDelete({ user: req.userId, name });
 
             if (!user) {
-                return res.status(400).send("User not found");
+                return res.status(400).send("not found user");
             }
 
             user.lessons.splice(user.lessons.indexOf(lesson._id), 1);
