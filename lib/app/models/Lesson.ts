@@ -5,6 +5,7 @@ import { ILesson } from "../../interfaces/LessonModel";
 const LessonSchema = new mongoose.Schema({
     name: {
         type: String,
+        required: true,
     },
     created: {
         type: Date,

@@ -1,5 +1,5 @@
 import { Response, Router } from "express";
-import { Delete, Post } from "../../helpers/decorators";
+import { Delete, Get, Post } from "../../helpers/decorators";
 import { IRequest } from "../../interfaces/express";
 import Lesson from "../models/Lesson";
 import User from "../models/User";
@@ -15,10 +15,6 @@ class LessonController {
             const user = await User.findById(req.userId);
             let lesson = await Lesson.findOne({ name });
 
-            if (!user) {
-                return res.status(400).send("not found user");
-            }
-
             if (lesson) {
                 return res.status(400).send("Lesson exists");
             }
@@ -28,7 +24,7 @@ class LessonController {
 
             await user.save();
 
-            return res.send(user.lessons);
+            return res.send(lesson.name);
         } catch (err) {
             return res.status(400).send(err);
         }
@@ -42,15 +38,22 @@ class LessonController {
             const lesson = await Lesson.findOne({ user: req.userId, name });
             await Lesson.findOneAndDelete({ user: req.userId, name });
 
-            if (!user) {
-                return res.status(400).send("not found user");
-            }
-
             user.lessons.splice(user.lessons.indexOf(lesson._id), 1);
 
             await user.save();
 
-            return res.send(user.lessons);
+            return res.send(lesson.name);
+        } catch (err) {
+            return res.status(400).send(err);
+        }
+    }
+
+    @Get("/", router)
+    public async get(req: IRequest, res: Response) {
+        try {
+            const lessons = await Lesson.find({ user: req.userId });
+
+            return res.send(lessons);
         } catch (err) {
             return res.status(400).send(err);
         }
