@@ -13,7 +13,7 @@ class LessonController {
         try {
             const { name } = req.body;
             const user = await User.findById(req.userId);
-            let lesson = await Lesson.findOne({ name });
+            let lesson = await Lesson.findOne({ name, user: req.userId });
 
             if (lesson) {
                 return res.status(400).send("Lesson exists");
