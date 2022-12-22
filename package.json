@@ -22,7 +22,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-typescript": "^5.0.1",
     "jezzmailer": "^1.0.4",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.7.1",
     "nodemon": "^1.19.3"
   },
